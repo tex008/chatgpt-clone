@@ -19,11 +19,7 @@ function App() {
 
     const response = await sendRequest({ prompt: userInput });
 
-    console.log("response", response);
-
-    const formattedResponse = response.data
-      .split("\n")
-      .map((line) => <p>{line}</p>);
+    const formattedResponse = response.data.data;
 
     setChatLog([
       ...chatlog,

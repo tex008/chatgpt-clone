@@ -1,22 +1,35 @@
-const { Configuration, OpenAIApi } = require("openai");
+const OpenAI = require("openai").OpenAI;
 require("dotenv").config();
 
-module.exports = class openai {
-  static configuration() {
-    const configuration = new Configuration({
-      apiKey: process.env.OPENAI_API_KEY,
-    });
-
-    return new OpenAIApi(configuration);
+class Openai {
+  constructor() {
+    this.openai = new OpenAI();
+    this.openai.apiKey = process.env.OPENAI_API_KEY;
   }
 
-  static textCompletion({ prompt }) {
-    return {
-      model: "gpt-3.5-turbo",
-      prompt: `${prompt}`,
-      temperature: 0.3,
-      frequency_penalty: 0,
-      presence_penalty: 0,
-    };
+  async call(
+    modelName,
+    data,
+    temperature = 0.4,
+    frequencyPenalty = 2,
+    presencePenalty = -1
+  ) {
+    try {
+      const response = await this.openai.chat.completions.create({
+        model: modelName,
+        messages: data,
+        temperature: temperature,
+        frequency_penalty: frequencyPenalty,
+        presence_penalty: presencePenalty,
+      });
+
+      const chatResponse = response.choices[0].message.content;
+      return chatResponse;
+    } catch (error) {
+      console.error("Error in OpenAI API call:", error);
+      throw error;
+    }
   }
-};
+}
+
+module.exports = Openai;

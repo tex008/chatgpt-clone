@@ -18,8 +18,8 @@ module.exports = {
     } catch (error) {
       return res.status(500).json({
         sucess: false,
-        error: error.res
-          ? error.response
+        error: error.response
+          ? error.response.data
           : "There was an error when creating the text",
       });
     }

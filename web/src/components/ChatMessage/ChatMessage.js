@@ -8,7 +8,7 @@ export default function ChatMessage({ message }) {
         <div
           className={`avatar ${message.userchatgpt === "gpt" && "chatgpt"} `}
         >
-          {message.user === "gpt" && <Avatar />}
+          <Avatar user={message.user} />
         </div>
         <div className="message">{message.message}</div>
       </div>

@@ -74,6 +74,7 @@
 .chat-log {
   text-align: left;
   white-space: "pre-wrap";
+  margin-bottom: 8px;
 }
 
 .chat-message.chatgpt {

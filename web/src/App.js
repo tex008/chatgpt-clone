@@ -29,7 +29,7 @@ function App() {
       },
       {
         user: "gpt",
-        message: formattedResponse,
+        message: `${formattedResponse}`,
       },
     ]);
 

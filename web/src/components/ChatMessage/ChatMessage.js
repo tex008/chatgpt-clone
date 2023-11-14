@@ -2,7 +2,6 @@ import React from "react";
 import Avatar from "../../Assets/Avatar";
 
 export default function ChatMessage({ message }) {
-  console.log(" no chat messages", message);
   return (
     <div className={`chat-message ${message.user === "gpt" && "chatgpt"}`}>
       <div className="chat-message-center">

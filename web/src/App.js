@@ -19,7 +19,7 @@ function App() {
 
     const response = await sendRequest({ prompt: userInput });
 
-    const formattedResponse = response.data.data;
+    const formattedResponse = response.data;
 
     setChatLog([
       ...chatlog,
